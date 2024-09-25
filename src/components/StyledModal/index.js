@@ -4,6 +4,7 @@ import {
   ModalContent,
   ProductDetails,
   ProductItem,
+  ProductList,
   ProductPrice,
   ProductQuantity,
   ProductTitle,
@@ -33,19 +34,23 @@ export default function StyledModal({ modalIsOpen, closeModal }) {
     >
       <ModalContent>
         <h2>Cart</h2>
-        {cart.length === 0 ? (
-          <p>Your cart is empty.</p>
-        ) : (
-          cart.map((product) => (
-            <ProductItem key={product.id}>
-              <ProductDetails>
-                <ProductTitle>{product.title}</ProductTitle>
-                <ProductPrice>${product.price}</ProductPrice>
-                <ProductQuantity>Quantity: {product.quantity}</ProductQuantity>
-              </ProductDetails>
-            </ProductItem>
-          ))
-        )}
+        <ProductList>
+          {cart.length === 0 ? (
+            <p>Your cart is empty.</p>
+          ) : (
+            cart.map((product) => (
+              <ProductItem key={product.id}>
+                <ProductDetails>
+                  <ProductTitle>{product.title}</ProductTitle>
+                  <ProductPrice>${product.price}</ProductPrice>
+                  <ProductQuantity>
+                    Quantity: {product.quantity}
+                  </ProductQuantity>
+                </ProductDetails>
+              </ProductItem>
+            ))
+          )}
+        </ProductList>
         <ProductTitle>Total Items: {getTotalItems()}</ProductTitle>
 
         <ProductTitle>Total Price: ${getTotalPrice()}</ProductTitle>
