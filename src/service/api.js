@@ -1,5 +1,8 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
-export default function handler(req, res) {
-  res.status(200).json({ name: "John Doe" });
+export async function fetchProducts() {
+  const res = await fetch("https://fakestoreapi.com/products");
+  if (!res.ok) {
+    throw new Error("Failed to fetch products");
+  }
+  const products = await res.json();
+  return products;
 }
