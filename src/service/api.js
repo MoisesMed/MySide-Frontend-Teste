@@ -1,7 +1,7 @@
+const ApiUrl = "https://fakestoreapi.in/api";
+
 export async function fetchProducts(page = 1, limit) {
-  const res = await fetch(
-    `https://fakestoreapi.in/api/products?page=${page}&limit=${limit}`
-  );
+  const res = await fetch(`${ApiUrl}/products?page=${page}&limit=${limit}`);
   if (!res.ok) {
     throw new Error("Failed to fetch products");
   }
@@ -10,7 +10,7 @@ export async function fetchProducts(page = 1, limit) {
 }
 
 export async function fetchCategories() {
-  const res = await fetch("https://fakestoreapi.in/api/products/category");
+  const res = await fetch(`${ApiUrl}/products/category`);
   if (!res.ok) {
     throw new Error("Failed to fetch products");
   }
@@ -19,7 +19,7 @@ export async function fetchCategories() {
 }
 
 export async function fetchSingleProduct(id) {
-  const res = await fetch(`https://fakestoreapi.in/api/products/${id}`);
+  const res = await fetch(`${ApiUrl}/products/${id}`);
   if (!res.ok) {
     throw new Error("Failed to fetch product");
   }
