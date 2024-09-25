@@ -54,3 +54,21 @@ export const Description = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
+
+export const SkeletonLoader = styled.div`
+  width: 100%;
+  height: 300px;
+  background-color: #e0e0e0;
+  animation: pulse 1.5s infinite;
+  @keyframes pulse {
+    0% {
+      background-color: #e0e0e0;
+    }
+    50% {
+      background-color: #f0f0f0;
+    }
+    100% {
+      background-color: #e0e0e0;
+    }
+  }
+`;

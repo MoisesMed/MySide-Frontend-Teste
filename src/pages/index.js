@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { fetchProducts } from "../service/api";
+import { usePagination } from "../contexts/PaginationContext";
 import styled from "styled-components";
 import ProductCard from "@/components/ProductCard";
 
@@ -13,35 +12,110 @@ const Grid = styled.div`
   gap: 20px;
 `;
 
-export default function Home() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  span {
+    align-self: center;
+    color: #333;
+    margin: 0 4px;
+  }
+`;
 
-  useEffect(() => {
-    async function getProducts() {
-      try {
-        const products = await fetchProducts();
-        setProducts(products);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    getProducts();
-  }, []);
+const Button = styled.button`
+  margin: 0 5px;
+  padding: 10px 20px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+`;
+
+const SearchContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+`;
+
+const SearchInput = styled.input`
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 50%;
+`;
+
+const Select = styled.select`
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
+export default function Home() {
+  const {
+    filteredProducts,
+    loading,
+    error,
+    page,
+    search,
+    limit,
+    categories,
+    selectedCategory,
+    handleSearchChange,
+    handlePageChange,
+    handleLimitChange,
+    handleCategoryChange,
+  } = usePagination();
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
     <Container>
+      <SearchContainer>
+        <SearchInput
+          type="text"
+          placeholder="Search products..."
+          value={search}
+          onChange={handleSearchChange}
+        />
+        <Select value={limit} onChange={handleLimitChange}>
+          <option value={10}>10</option>
+          <option value={20}>20</option>
+          <option value={30}>30</option>
+        </Select>
+        <Select value={selectedCategory} onChange={handleCategoryChange}>
+          <option value="">All Categories</option>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </Select>
+      </SearchContainer>
       <Grid>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </Grid>
+      <Pagination>
+        <Button
+          onClick={() => handlePageChange(page - 1)}
+          disabled={page === 1 || loading}
+        >
+          Previous
+        </Button>
+        <span>Page {page}</span>
+        <Button onClick={() => handlePageChange(page + 1)} disabled={loading}>
+          Next
+        </Button>
+      </Pagination>
     </Container>
   );
 }
