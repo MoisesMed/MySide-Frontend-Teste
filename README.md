@@ -1,40 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Teste Prático | Software Engineer - Frontend - Next.js
 
-## Getting Started
+## Objetivo
 
-First, run the development server:
+Construir uma aplicação web simples que exiba uma lista de produtos consumindo uma API externa, com funcionalidades de pesquisa e filtragem.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Pré-requisitos
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Antes de começar, certifique-se de atender aos seguintes requisitos:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- Você instalou a versão mais recente do Node.js
+- Você tem uma máquina com Windows, Linux ou MacOS
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Instalação
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Para instalar o projeto, siga estas etapas:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Clone o repositório:
 
-## Learn More
+   ```sh
+   git clone https://github.com/MoisesMed/MySide-Frontend-Teste.git
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Navegue até o diretório do projeto:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```sh
+   cd MySide-Frontend-Teste
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Instale as dependências:
+   ```sh
+   npm install
+   ```
+   ou, se estiver usando `yarn`:
+   ```sh
+   yarn install
+   ```
 
-## Deploy on Vercel
+## Uso
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Para usar o projeto, siga estas etapas:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Inicie o servidor de desenvolvimento:
+
+   ```sh
+   npm run dev
+   ```
+
+   ou, se estiver usando `yarn`:
+
+   ```sh
+   yarn dev
+   ```
+
+2. Abra seu navegador e acesse `http://localhost:3000`.
+
+## Funcionalidades
+
+1. **Exibição dos produtos**:
+
+   - A página principal (`pages/index.js`) exibe a lista de produtos em um layout de grid.
+   - Para cada produto, são exibidos a imagem, o nome, o preço e uma breve descrição.
+
+2. **Pesquisa e filtragem**:
+
+   - Barra de pesquisa para buscar produtos pelo nome.
+   - Dropdown ou conjunto de checkboxes para filtrar os produtos por categoria.
+
+3. **Detalhamento de Produto**:
+
+   - Ao clicar em um produto, o usuário é levado para uma página de detalhes do produto (`pages/products/[id].js`), onde mais informações sobre o produto são exibidas (ex.: descrição completa, preço, categoria).
+
+4. **Estilização**:
+
+   - Utilização de CSS Modules ou Styled Components para estilizar a aplicação.
+   - A aplicação é responsiva e oferece uma boa experiência de usuário tanto em desktop quanto em dispositivos móveis.
+
+5. **Testes**:
+   - Implementação de testes utilizando Jest e React Testing Library.
+
+## Contato
+
+Se você tiver alguma dúvida, entre em contato com `br.moises2605@gmail.com`.
